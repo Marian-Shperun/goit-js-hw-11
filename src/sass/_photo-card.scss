@@ -1,0 +1,43 @@
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 30px 15px;
+  row-gap: 35px;
+  overflow: auto;
+}
+
+.photo-card {
+  flex-basis: calc((100% - 90px) / 4);
+  box-shadow: 2px 4px #888888;
+  &:hover {
+    box-shadow: none;
+    transition: all 0.3s linear;
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #e6e2e2;
+  border-top: none;
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.load-more {
+  display: block;
+  margin: 30px auto 30px;
+  padding: 10px;
+  background-color: rgb(40, 84, 172);
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  &.hidden {
+    display: none;
+  }
+}
