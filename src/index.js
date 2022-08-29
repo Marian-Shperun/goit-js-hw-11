@@ -6,8 +6,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const formEl = document.querySelector('#search-form');
 const { searchQuery } = formEl;
 const galleryEl = document.querySelector('.gallery');
+const btnSearchEl = document.querySelector('.btn');
 const LoadMoreEL = document.querySelector('.load-more');
-
+console.log(btnSearchEl);
 // Styles for spiner
 Loading.init({
   backgroundColor: 'none',
@@ -68,17 +69,25 @@ const handleSubmit = e => {
   galleryEl.innerHTML = '';
   currentPage = 1;
   items = [];
-
   if (!query) return;
+
   fetchImg();
+
   skrollTop();
 };
 
+searchQuery.addEventListener('input', () => {
+  if (searchQuery.value === '') {
+    btnSearchEl.disabled = true;
+    btnSearchEl.setAttribute('title', 'Enter text to search');
+  } else {
+    btnSearchEl.disabled = false;
+    btnSearchEl.setAttribute('title', '');
+  }
+});
 formEl.addEventListener('submit', handleSubmit);
 
 function renderList(itemsData) {
-  searchQuery.value = '';
-
   galleryEl.insertAdjacentHTML('beforeend', createMarkup(itemsData));
   openImg.refresh();
 }
